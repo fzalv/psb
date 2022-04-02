@@ -15,7 +15,11 @@ $p = mysqli_fetch_object($peserta);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <title>PSB Online</title>
     <style>
-        table>tr>td {
+        h1 {
+            font-size: 50px;
+        }
+
+        .fontsize {
             font-size: 20px;
         }
     </style>
@@ -28,9 +32,9 @@ $p = mysqli_fetch_object($peserta);
 <body>
     <div class="container">
         <div class="my-5">
-            <h2>Bukti Pendaftaran</h2>
+            <h1>Bukti Pendaftaran</h1>
 
-            <table>
+            <table class="fontsize table">
                 <tr>
                     <td>Kode Pendaftaran</td>
                     <td>:</td>
