@@ -41,35 +41,40 @@ if ($_SESSION['stat_login'] != true) {
             </div>
         </nav>
 
-        <table class="table mt-5">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">ID Pendaftaran</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Jenis Kelamin</th>
-                    <th scope="col">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $no = 1;
-                $listPeserta = mysqli_query($conn, "SELECT * FROM tb_pendaftaran");
-                while ($row = mysqli_fetch_array($listPeserta)) {
-                ?>
+        <!-- body -->
+        <div class="mt-5">
+            <h2>Data Peserta</h2>
+            <a href="cetak-peserta.php" class="btn btn-info my-2" target="_blank">Cetak</a>
+            <table class="table">
+                <thead class="thead-light">
                     <tr>
-                        <th scope="row"><?= $no++ ?></th>
-                        <td><?= $row['id_daftar'] ?></td>
-                        <td><?= $row['nm_peserta'] ?></td>
-                        <td><?= $row['jenkel'] ?></td>
-                        <td>
-                            <a href="detail-peserta.php?id=<?= $row['id_daftar'] ?>" class="btn btn-primary">Detail</a>
-                            <a href="hapus-peserta.php?id=<?= $row['id_daftar'] ?>" onclick="return confirm('Yakin ?')" class="btn btn-danger">Hapus</a>
-                        </td>
+                        <th scope="col">#</th>
+                        <th scope="col">ID Pendaftaran</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Jenis Kelamin</th>
+                        <th scope="col">Aksi</th>
                     </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php
+                    $no = 1;
+                    $listPeserta = mysqli_query($conn, "SELECT * FROM tb_pendaftaran");
+                    while ($row = mysqli_fetch_array($listPeserta)) {
+                    ?>
+                        <tr>
+                            <th scope="row"><?= $no++ ?></th>
+                            <td><?= $row['id_daftar'] ?></td>
+                            <td><?= $row['nm_peserta'] ?></td>
+                            <td><?= $row['jenkel'] ?></td>
+                            <td>
+                                <a href="detail-peserta.php?id=<?= $row['id_daftar'] ?>" class="btn btn-primary">Detail</a>
+                                <a href="hapus-peserta.php?id=<?= $row['id_daftar'] ?>" onclick="return confirm('Yakin ?')" class="btn btn-danger">Hapus</a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 
