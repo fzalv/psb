@@ -59,7 +59,7 @@ include 'koneksi.php';
                         <td><?= $row['nm_peserta'] ?></td>
                         <td><?= $row['jenkel'] ?></td>
                         <td>
-                            <a href="" class="btn btn-primary">Detail</a>
+                            <a href="detail-peserta.php?id=<?= $row['id_daftar'] ?>" class="btn btn-primary">Detail</a>
                             <a href="hapus-peserta.php?id=<?= $row['id_daftar'] ?>" onclick="return confirm('Yakin ?')" class="btn btn-danger">Hapus</a>
                         </td>
                     </tr>
