@@ -1,13 +1,19 @@
 <?php
+session_start();
 include 'koneksi.php';
 
 if (isset($_POST['login'])) {
     $cek = mysqli_query($conn, "SELECT * FROM tb_admin WHERE username = '" . $_POST['user'] . "' AND password = '" . MD5($_POST['pass']) . "' ");
 
     if (mysqli_num_rows($cek) > 0) {
-        echo 'akun ada';
+        $a = mysqli_fetch_object($cek);
+        $_SESSION['stat_login'] = true;
+        $_SESSION['id'] = $a->id_admin;
+        $_SESSION['nama'] = $a->nm_admin;
+
+        echo '<script>window.location="beranda.php"</script>';
     } else {
-        echo 'akun tidak ada';
+        echo '<script>alert("Username atau Password Salah")</script>';
     }
 }
 ?>
