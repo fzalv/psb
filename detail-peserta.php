@@ -2,8 +2,14 @@
 session_start();
 include 'koneksi.php';
 
+if ($_SESSION['stat_login'] != true) {
+    echo '<script>window.location="login.php"</script>';
+}
+
 $peserta = mysqli_query($conn, "SELECT * from tb_pendaftaran WHERE id_daftar = '" . $_GET['id'] . "' ");
 $p = mysqli_fetch_object($peserta);
+
+
 ?>
 
 <!DOCTYPE html>
