@@ -1,6 +1,10 @@
 <?php
 session_start();
 include 'koneksi.php';
+
+if ($_SESSION['stat_login'] != true) {
+    echo '<script>window.location="login.php"</script>';
+}
 ?>
 
 <!DOCTYPE html>
