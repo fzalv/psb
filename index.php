@@ -39,81 +39,90 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-    <div class="container">
+    <div class="container my-5">
         <form action="" method="POST">
-            <div class="card mx-auto" style="width: 30rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Formulir Pendaftaran Siswa Baru SMK</h5>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for=" tahunajar">Tahun Ajaran</label>
-                            <input type="text" class="form-control text-center" name="tahunajar" value="2021/2022" readonly>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card mx-auto">
+                        <div class=" card-body">
+                            <h5 class="card-title">Formulir Pendaftaran Siswa Baru SMK</h5>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="tahunajar">Tahun Ajaran</label>
+                                    <input type="text" class="form-control text-center" name="tahunajar" value="2021/2022" readonly>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="card mx-auto" style="width: 30rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Data Diri Calon Siswa</h5>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for="nama">Nama Lengkap</label>
-                            <input type="text" class="form-control" name="nama">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for="tempat_lahir">Tempat Lahir</label>
-                            <input type="text" class="form-control" name="tempat_lahir">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for="tgl_lahir">Tanggal Lahir</label>
-                            <input type="date" class="form-control" name="tgl_lahir">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for="jenkel">Jenis Kelamin</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jenkel" value="Laki-Laki" checked>
-                                <label class="form-check-label" for="jenkel_laki">
-                                    Laki-Laki
-                                </label>
+                <div class="col-md-6">
+                    <div class="card mx-auto" style="width: 30rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Data Diri Calon Siswa</h5>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="nama">Nama Lengkap</label>
+                                    <input type="text" class="form-control" name="nama">
+                                </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jenkel" value="Perempuan" checked>
-                                <label class="form-check-label" for="jenkel_per">
-                                    Perempuan
-                                </label>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="tempat_lahir">Tempat Lahir</label>
+                                    <input type="text" class="form-control" name="tempat_lahir">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="tgl_lahir">Tanggal Lahir</label>
+                                    <input type="date" class="form-control" name="tgl_lahir">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="jenkel">Jenis Kelamin</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="jenkel" value="Laki-Laki" checked>
+                                        <label class="form-check-label" for="jenkel_laki">
+                                            Laki-Laki
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="jenkel" value="Perempuan">
+                                        <label class="form-check-label" for="jenkel_per">
+                                            Perempuan
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="agama">Agama</label>
+                                    <select class="form-control" name="agama">
+                                        <option value="" class="text-center">-- Pilih --</option>
+                                        <option value="Islam">Islam</option>
+                                        <option value="Kristen">Kristen</option>
+                                        <option value="Hindu">Hindu</option>
+                                        <option value="Budha">Budha</option>
+                                        <option value="Khonghucu">Budha</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="alamat">Alamat Lengkap</label>
+                                    <textarea class="form-control" name="alamat"></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for="agama">Agama</label>
-                            <select class="form-control" name="agama">
-                                <option value="" class="text-center">-- Pilih --</option>
-                                <option value="Islam">Islam</option>
-                                <option value="Kristen">Kristen</option>
-                                <option value="Hindu">Hindu</option>
-                                <option value="Budha">Budha</option>
-                                <option value="Khonghucu">Budha</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for="alamat">Alamat Lengkap</label>
-                            <textarea class="form-control" name="alamat"></textarea>
-                        </div>
+                        <input type="submit" name="submit" class="btn btn-primary" value="Daftar Sekarang" />
                     </div>
                 </div>
-                <input type="submit" name="submit" class="btn btn-primary" value="Daftar Sekarang" />
             </div>
         </form>
+    </div>
+
+
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
