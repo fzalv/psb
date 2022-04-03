@@ -60,7 +60,7 @@ include 'koneksi.php';
                         <td><?= $row['jenkel'] ?></td>
                         <td>
                             <a href="" class="btn btn-primary">Detail</a>
-                            <a href="hapus-peserta.php" onclick="return confirm('Yakin ?')" class="btn btn-danger">Hapus</a>
+                            <a href="hapus-peserta.php?id=<?= $row['id_daftar'] ?>" onclick="return confirm('Yakin ?')" class="btn btn-danger">Hapus</a>
                         </td>
                     </tr>
                 <?php } ?>
