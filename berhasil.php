@@ -13,13 +13,16 @@ include 'koneksi.php';
     <title>PSB Online</title>
 </head>
 
-<body>
+<body class="bg-light">
     <div class="container">
         <div class="my-5">
             <h2 class="text-center">Pendaftaran Berhasil</h2>
-            <div class="card mx-auto" style="width: 30rem;">
+            <div class="card mx-auto" style="width: 30rem; height:5rem;">
                 <h5 class="text-center">Kode Pendaftaran Anda Adalah <?= $_GET['id'] ?></h5>
-                <a href="cetak.php?id=<?= $_GET['id'] ?>" target="_blank" class="btn btn-primary">Cetak Bukti Daftar</a>
+                <div class="row mx-2">
+                    <div class="col-md-6"><a href="cetak.php?id=<?= $_GET['id'] ?>" target="_blank" class="btn btn-primary w-100">Cetak Bukti Daftar</a></div>
+                    <div class="col-md-6"><a href="index.php ?>" class="btn btn-danger w-100">Kembali</a></div>
+                </div>
             </div>
         </div>
     </div>

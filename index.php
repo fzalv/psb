@@ -5,17 +5,52 @@ if (isset($_POST['submit'])) {
     $d = mysqli_fetch_object($getmaxid);
     $generateid = 'P' . date('Y') . sprintf('%05s', $d->id + 1);
 
+    function upload()
+    {
+        $namaFile = $_FILES['foto']['name'];
+        $tmpName = $_FILES['foto']['tmp_name'];
+
+        //mengecek file nya gambar atau bukan
+        $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+        $ekstensiGambar = explode('.', $namaFile);
+        $ekstensiGambar = strtolower(end($ekstensiGambar));
+        if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+            echo '<script>
+                alert("File yang anda upload bukan gambar");
+                window.location="index.php";
+            </script>';
+            return false;
+        }
+
+        //generate nama file baru
+        $namaFileBaru = uniqid();
+        $namaFileBaru .= '.';
+        $namaFileBaru .= $ekstensiGambar;
+
+        move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
+        return $namaFileBaru;
+    }
+
+    $foto = upload();
+    if (!$foto) {
+        return false;
+    }
     $insert = mysqli_query($conn, "INSERT INTO tb_pendaftaran VALUES (
-        '" . $generateid . "',
-        '" . date('Y-m-d') . "',
-        '" . $_POST['tahunajar'] . "',
-        '" . $_POST['nama'] . "',
-        '" . $_POST['tempat_lahir'] . "',
-        '" . $_POST['tgl_lahir'] . "',
-        '" . $_POST['jenkel'] . "',
-        '" . $_POST['agama'] . "',
-        '" . $_POST['alamat'] . "'
-    )");
+            '" . $generateid . "',
+            '" . date('Y-m-d') . "',
+            '" . $_POST['tahunajar'] . "',
+            '" . $_POST['nama'] . "',
+            '" . $_POST['tempat_lahir'] . "',
+            '" . $_POST['tgl_lahir'] . "',
+            '" . $_POST['jenkel'] . "',
+            '" . $_POST['agama'] . "',
+            '" . $_POST['alamat'] . "',
+            '$foto'
+        )");
+
+    // var_dump($_POST);
+    // var_dump($_FILES);
+    // die;
 
     if ($insert) {
         echo '<script>window.location="berhasil.php?id=' . $generateid . '"</script>';
@@ -38,14 +73,14 @@ if (isset($_POST['submit'])) {
     <title>PSB Online</title>
 </head>
 
-<body>
+<body class="bg-light">
     <div class="container my-5">
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="card mx-auto">
                         <div class=" card-body">
-                            <h5 class="card-title">Formulir Pendaftaran Siswa Baru SMK</h5>
+                            <h5 class="card-title text-center">Formulir Pendaftaran Siswa Baru SMPI Al Ihsan School</h5>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="tahunajar">Tahun Ajaran</label>
@@ -63,19 +98,19 @@ if (isset($_POST['submit'])) {
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="nama">Nama Lengkap</label>
-                                    <input type="text" class="form-control" name="nama">
+                                    <input type="text" class="form-control" name="nama" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="tempat_lahir">Tempat Lahir</label>
-                                    <input type="text" class="form-control" name="tempat_lahir">
+                                    <input type="text" class="form-control" name="tempat_lahir" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="tgl_lahir">Tanggal Lahir</label>
-                                    <input type="date" class="form-control" name="tgl_lahir">
+                                    <input type="date" class="form-control" name="tgl_lahir" required>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -111,7 +146,13 @@ if (isset($_POST['submit'])) {
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="alamat">Alamat Lengkap</label>
-                                    <textarea class="form-control" name="alamat"></textarea>
+                                    <textarea class="form-control" name="alamat" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="foto">Upload Gambar</label>
+                                    <input type="file" class="form-control-file" name="foto" required>
                                 </div>
                             </div>
                         </div>
