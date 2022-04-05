@@ -52,6 +52,11 @@ $p = mysqli_fetch_object($peserta);
 
             <table class="fontsize table">
                 <tr>
+                    <td>
+                        <img src="img/<?= $p->foto ?>" width="150">
+                    </td>
+                </tr>
+                <tr>
                     <td>Kode Pendaftaran</td>
                     <td>:</td>
                     <td><?= $p->id_daftar ?></td>
